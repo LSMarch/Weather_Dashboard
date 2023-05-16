@@ -8,9 +8,11 @@ const Search = () => {
 
     const onSearch = (event) => {
         event.preventDefault();
-        console.log(city);
-        dispatch(addCity(city));
-        dispatch(fetchWeather(city))
+        if (city) {
+            dispatch(addCity(city));
+            dispatch(fetchWeather(city));
+        }
+        setCity('');
     }
 
     const onCityChange = (event) => {
@@ -18,14 +20,14 @@ const Search = () => {
     }
 
     return (
-        <aside className='container-fluid mt-2'>
+        <section className='container-fluid mt-2'>
             <form className='w-25' onSubmit={onSearch}>
                 <div className='input-group'>
-                    <input onChange={onCityChange} type='text' className='form-control'></input>
+                    <input value={city} onChange={onCityChange} type='text' className='form-control'></input>
                     <button type='submit' className='btn btn-secondary'>Search</button>
                 </div>
             </form>
-        </aside>
+        </section>
     )
 }
 
