@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { fetchForcast, selectCityData } from '../cities/citySlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { selectCityData } from '../cities/citySlice';
+import { useSelector } from 'react-redux';
+import Current from './Current';
 import { format } from 'date-fns';
 
 const Weather = () => {
-    const dispatch = useDispatch();
     const status = useSelector(state => state.city.status);
     const data = useSelector(selectCityData);
 
@@ -21,7 +20,7 @@ const Weather = () => {
     if (status === 'succeeded') {
         const forecast = data.forecast.forecastday.map(day => (
             <article key={day.date}>
-                <div className='card m-2 '>
+                <div className='card m-2 border-0'>
                     <div className='card-body'>
                         <p className='card-title text-center border-bottom'>{format(new Date(day.date), 'EEEE')}</p>
                         <img className='custom__sm-card-img' src={day.day.condition.icon} alt={data.current.condition.text} />
@@ -37,13 +36,14 @@ const Weather = () => {
         content = (
             <main className='d-flex flex-column mt-2'>
                 <div className='card '>
-
-                    <div className='card-body '>
+                    <Current data={data} />
+                    {/* <div className='card-body '>
                         <h2 className='card-title text-center'>Currently in {data.location.name}</h2>
                         <img className='custom__lg-card-img' src={data.current.condition.icon} alt={data.current.condition.text}></img>
+                        <p className='card-text text-center'>{data.current.condition.text}</p>
                         <p className='text-center'>Temperature: {data.current.temp_f} F</p>
                         <p className='text-center'>Feels Like: {data.current.feelslike_f}</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='card mt-4 '>
                     <h3 className='card-title text-center mt-1'>Forecast</h3>

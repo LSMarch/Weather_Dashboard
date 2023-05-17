@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCity, fetchWeather } from './citySlice';
 import CityList from './CityList';

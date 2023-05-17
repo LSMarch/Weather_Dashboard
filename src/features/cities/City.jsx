@@ -1,8 +1,11 @@
-import React from 'react'
+const City = ({ name }) => {
 
-const City = ({ city }) => {
+    const formatCity = (name) => {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
     return (
-        <p>{city.name}</p>
+        formatCity(name)
     )
 }
 

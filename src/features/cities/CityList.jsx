@@ -1,17 +1,13 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllCities } from './citySlice';
+import City from './City';
 
 const CityList = () => {
     const cities = useSelector(selectAllCities);
 
-    const formatCity = (name) => {
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    }
-
     const renderedCities = cities.map(city => (
         <li className='list-group-item' key={city.id}>
-            {formatCity(city.name)}
+            <City name={city.name} />
         </li>
 
     ))
