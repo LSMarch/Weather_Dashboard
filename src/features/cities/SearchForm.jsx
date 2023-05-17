@@ -21,14 +21,14 @@ const Search = () => {
     }
 
     return (
-        <section className='mt-2'>
+        <section className='d-flex flex-column m-2'>
             <form onSubmit={onSearch}>
                 <div className='input-group'>
                     <input value={city} onChange={onCityChange} type='text' className='form-control'></input>
                     <button type='submit' className='btn btn-secondary'>Search</button>
                 </div>
             </form>
-            <CityList />
+            {/* <CityList /> */}
         </section>
     )
 }

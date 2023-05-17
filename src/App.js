@@ -5,15 +5,22 @@ import Weather from './features/weather/Weather';
 
 function App() {
   return (
-    <>
-      <Header />
-      <div className='d-flex'>
-        <aside className='m-3 w-25'>
-          <Search />
-        </aside>
-        <Weather />
+    <div >
+      <img
+        className='bg-img'
+        src='https://news.uga.edu/wp-content/uploads/2022/12/Weather-radar.jpg'
+      />
+      <div className='bg-content'>
+        <Header />
+        <div className='d-flex justify-content-evenly '>
+          <CityList />
+          <Weather />
+        </div>
       </div>
-    </>
+
+
+
+    </div>
 
   );
 }

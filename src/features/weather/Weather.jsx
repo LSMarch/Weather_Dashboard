@@ -10,7 +10,11 @@ const Weather = () => {
     let content;
 
     if (status === 'idle') {
-        content = <p>Type in a city</p>
+        content = (
+            <article className='card  mt-3 pt-2 p-5'>
+                <h4 className='card-title'>Search a City</h4>
+            </article>
+        )
     }
 
     if (status === 'failed') {
@@ -26,7 +30,7 @@ const Weather = () => {
             </article>
         ))
         content = (
-            <main className='d-flex flex-column mt-2'>
+            <main className='d-flex flex-column mt-3 m-2'>
                 <div className='card '>
                     <Current data={data} />
                 </div>
