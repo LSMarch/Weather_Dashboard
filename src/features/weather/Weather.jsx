@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { fetchForcast, selectCityData } from '../cities/citySlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { format } from 'date-fns';
 
 const Weather = () => {
     const dispatch = useDispatch();
@@ -19,22 +20,38 @@ const Weather = () => {
 
     if (status === 'succeeded') {
         const forecast = data.forecast.forecastday.map(day => (
-            <div key={day.date}>
-                <p>{day.date}</p>
-                <img src={day.day.condition.icon} />
-                <p>{day.day.condition.text}</p>
-                <p>Low: {day.day.mintemp_f}</p>
-                <p>High: {day.day.maxtemp_f}</p>
-            </div>
+            <article key={day.date}>
+                <div className='card m-2 '>
+                    <div className='card-body'>
+                        <p className='card-title text-center border-bottom'>{format(new Date(day.date), 'EEEE')}</p>
+                        <img className='custom__sm-card-img' src={day.day.condition.icon} alt={data.current.condition.text} />
+                        <p className='card-text text-center'>{day.day.condition.text}</p>
+                        <p className='card-text text-center'><strong>Low: </strong> {day.day.mintemp_f}</p>
+                        <p className='card-text text-center'><strong>High: </strong> {day.day.maxtemp_f}</p>
+                    </div>
+
+                </div>
+
+            </article>
         ))
         content = (
-            <main>
-                <h2>Currently in {data.location.name}</h2>
-                <img src={data.current.condition.icon}></img>
-                <p>Temperature: {data.current.temp_f} F</p>
-                <p>Feels Like: {data.current.feelslike_f}</p>
-                <h3>Forecast</h3>
-                {forecast}
+            <main className='d-flex flex-column mt-2'>
+                <div className='card '>
+
+                    <div className='card-body '>
+                        <h2 className='card-title text-center'>Currently in {data.location.name}</h2>
+                        <img className='custom__lg-card-img' src={data.current.condition.icon} alt={data.current.condition.text}></img>
+                        <p className='text-center'>Temperature: {data.current.temp_f} F</p>
+                        <p className='text-center'>Feels Like: {data.current.feelslike_f}</p>
+                    </div>
+                </div>
+                <div className='card mt-4 '>
+                    <h3 className='card-title text-center mt-1'>Forecast</h3>
+                    <article className='d-flex flex-row'>
+                        {forecast}
+                    </article>
+                </div>
+
             </main>
         )
     }

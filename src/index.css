@@ -1,0 +1,19 @@
+.searched-cities {
+    width: 100%;
+}
+
+.custom__lg-card-img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom__sm-card-img {
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+}
