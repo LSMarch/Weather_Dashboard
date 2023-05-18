@@ -42,9 +42,6 @@ const Weather = () => {
             break;
         case 'failed':
             content = <p>Trouble loading data</p>
-        default:
-            content = <p>Trouble Loading Data</p>
-            break;
     }
 
     return content;

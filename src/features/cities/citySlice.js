@@ -1,7 +1,6 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
 
 const APIkey = process.env.REACT_APP_API_KEY;
-const otherapi = "db30d5ba2b96408cb9444455230905"
 
 const initialState = {
     cities: [],
@@ -13,7 +12,6 @@ const initialState = {
 export const fetchWeather = createAsyncThunk('city/fetchWeather', async (city) => {
     const firstResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${APIkey}&q=${city}&days=3&aqi=yes&alerts=no`);
     const firstData = await firstResponse.json();
-    console.log(firstData)
     return firstData;
 
 });
