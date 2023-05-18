@@ -1,7 +1,15 @@
 const City = ({ name }) => {
-
     const formatCity = (name) => {
-        return name.charAt(0).toUpperCase() + name.slice(1);
+        // capitalizing the first letter
+        // and the letter after a space
+        const newName = name.toLowerCase().split('');
+        newName[0] = newName[0].toUpperCase();
+
+        if (newName.includes(" ")) {
+            const space = newName.indexOf(" ");
+            newName[space + 1] = newName[space + 1].toUpperCase();
+        }
+        return newName.join('');
     }
 
     return (
@@ -9,4 +17,4 @@ const City = ({ name }) => {
     )
 }
 
-export default City
+export default City;

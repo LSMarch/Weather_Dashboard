@@ -9,42 +9,45 @@ const Weather = () => {
 
     let content;
 
-    if (status === 'idle') {
-        content = (
-            <article className='card  mt-3 pt-2 p-5'>
-                <h4 className='card-title'>Search a City</h4>
-            </article>
-        )
+    switch (status) {
+        case 'idle':
+            content = (
+                <article className='card  mt-3 pt-2 p-5'>
+                    <h4 className='card-title'>Search a City</h4>
+                </article>
+            )
+            break;
+        case 'succeeded':
+            const forecast = data.forecast.forecastday.map(day => (
+                <article key={day.date}>
+                    <div className='card m-2 border-0'>
+                        <Forecast data={day} />
+                    </div>
+                </article>
+            ))
+            content = (
+                <main className='d-flex flex-column mt-3 m-2'>
+                    <div className='card '>
+                        <Current data={data} />
+                    </div>
+                    <div className='card mt-4 '>
+                        <h3 className='card-title text-center mt-1'>Forecast</h3>
+                        <article className='d-flex flex-row'>
+                            {forecast}
+                        </article>
+                    </div>
+
+                </main>
+            )
+            break;
+        case 'failed':
+            content = <p>Trouble loading data</p>
+        default:
+            content = <p>Trouble Loading Data</p>
+            break;
     }
 
-    if (status === 'failed') {
-        content = <p>Trouble Loading Data</p>
-    }
-
-    if (status === 'succeeded') {
-        const forecast = data.forecast.forecastday.map(day => (
-            <article key={day.date}>
-                <div className='card m-2 border-0'>
-                    <Forecast data={day} />
-                </div>
-            </article>
-        ))
-        content = (
-            <main className='d-flex flex-column mt-3 m-2'>
-                <div className='card '>
-                    <Current data={data} />
-                </div>
-                <div className='card mt-4 '>
-                    <h3 className='card-title text-center mt-1'>Forecast</h3>
-                    <article className='d-flex flex-row'>
-                        {forecast}
-                    </article>
-                </div>
-
-            </main>
-        )
-    }
-    return content
+    return content;
 }
 
 export default Weather

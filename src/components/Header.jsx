@@ -1,4 +1,3 @@
-import React from 'react';
 import Search from '../features/cities/SearchForm';
 
 const Header = () => {
@@ -8,7 +7,6 @@ const Header = () => {
                 <h1 className="navbar-brand mb-0 h1 text-light">Weather Dash</h1>
                 <Search />
             </div>
-
         </nav>
     )
 }

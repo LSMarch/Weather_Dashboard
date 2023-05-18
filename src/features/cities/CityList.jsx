@@ -16,7 +16,7 @@ const CityList = () => {
 
     if (status === 'succeeded') {
         content = (
-            <section className='card mt-3 pt-2 p-5'>
+            <section className='card mt-3 pt-2 p-3'>
                 <h4>Searched Cities</h4>
                 <ul className='list-group'>
                     {renderedCities}

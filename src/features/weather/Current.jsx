@@ -1,9 +1,8 @@
-import React from 'react'
-
 const Current = ({ data }) => {
     return (
-        <div className='card-body '>
-            <h2 className='card-title text-center'>Currently in <em>{data.location.name}</em></h2>
+        <div className='card-body'>
+            {/* add an underline on city name? */}
+            <h2 className='card-title text-center'>Currently in <em>{data.location.name}, {data.location.region}</em></h2>
             <img className='custom__lg-card-img' src={data.current.condition.icon} alt={data.current.condition.text}></img>
             <p className='card-text text-center'>{data.current.condition.text}</p>
             <p className='text-center'><strong>Temperature: </strong>{data.current.temp_f}&deg;F</p>

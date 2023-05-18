@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCity, fetchWeather } from './citySlice';
-import CityList from './CityList';
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -24,11 +23,16 @@ const Search = () => {
         <section className='d-flex flex-column m-2'>
             <form onSubmit={onSearch}>
                 <div className='input-group'>
-                    <input value={city} onChange={onCityChange} type='text' className='form-control'></input>
+                    <input
+                        placeholder='Enter City or Zipcode'
+                        value={city}
+                        onChange={onCityChange}
+                        type='text'
+                        className='form-control'
+                    />
                     <button type='submit' className='btn btn-secondary'>Search</button>
                 </div>
             </form>
-            {/* <CityList /> */}
         </section>
     )
 }
