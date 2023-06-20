@@ -1,6 +1,7 @@
 {
   "name": "better-weather-dash",
   "version": "0.1.0",
+  "homepage": "https://LSMarch.github.id/Weather_Dashboard",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -44,6 +45,5 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
-  },
-  "homepage": "http://LSMarch.github.id/Weather_Dashboard"
+  }
 }
